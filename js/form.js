@@ -35,15 +35,19 @@ document.addEventListener('DOMContentLoaded', () => {
     messageInput.value = savedForm.message || '';
   }
 
-  form.addEventListener('submit', e=>{
-    e.preventDefault();
-    const formData = {
-      name:nameInput.value,
-      email:emailInput.value,
-      message:messageInput.value
-    };
-    sessionStorage.setItem('submittedForm',JSON.stringify(formData));
-    output.textContent = JSON.stringify(formData,null,2);
-    alert('Formulário enviado e salvo em sessionStorage!');
-  });
+  form.addEventListener('submit', e => {
+  e.preventDefault();
+  const formData = {
+    name: nameInput.value,
+    email: emailInput.value,
+    message: messageInput.value
+  };
+  sessionStorage.setItem('submittedForm', JSON.stringify(formData));
+
+  output.textContent = `Nome: ${formData.name}
+Email: ${formData.email}
+Mensagem: ${formData.message}`;
+
+  alert('Formulário enviado e salvo em sessionStorage!');
+});
 });
