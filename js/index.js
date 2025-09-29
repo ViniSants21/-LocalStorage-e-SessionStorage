@@ -2,31 +2,30 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnLight = document.getElementById('btnLight');
   const btnDark = document.getElementById('btnDark');
 
-  // Função para aplicar tema
+
   function applyTheme(theme){
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
   }
 
-  // Aplica tema salvo ou padrão
+
   applyTheme(localStorage.getItem('theme') || 'light');
 
   btnLight.addEventListener('click', () => applyTheme('light'));
   btnDark.addEventListener('click', () => applyTheme('dark'));
 
-  // Lista de produtos
+ 
   const products = ["Notebook", "Carro", "Iphone", "Tablet", "Monitor"];
   const productList = document.getElementById('productList');
 
-  // Carrinho
-  let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+ 
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
   function updateCartStorage(){
-    sessionStorage.setItem('cart', JSON.stringify(cart));
-    localStorage.setItem('cartUpdate', Date.now()); // sinaliza para outras abas
+    localStorage.setItem('cart', JSON.stringify(cart));
+    localStorage.setItem('cartUpdate', Date.now()); 
   }
 
-  // Renderiza produtos
   function renderProducts(){
     productList.innerHTML = '';
     products.forEach(product => {
@@ -45,11 +44,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   renderProducts();
 
-  // Detecta alterações de cart em outras abas
+
   window.addEventListener('storage', (event) => {
     if(event.key === 'cartUpdate'){
-      cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+      cart = JSON.parse(localStorage.getItem('cart')) || [];
       console.log('Carrinho atualizado em outra aba:', cart);
+      alert('O carrinho foi atualizado em outra aba!');
     }
     if(event.key === 'theme'){
       applyTheme(event.newValue);

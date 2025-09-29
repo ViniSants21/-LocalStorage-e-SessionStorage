@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // ===== Tema =====
+
   const btnLight = document.getElementById('btnLight');
   const btnDark = document.getElementById('btnDark');
 
@@ -8,18 +8,19 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('theme', theme);
   }
 
+
   applyTheme(localStorage.getItem('theme') || 'light');
 
   btnLight.addEventListener('click', () => applyTheme('light'));
   btnDark.addEventListener('click', () => applyTheme('dark'));
 
-  // ===== Carrinho =====
-  let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
   const cartList = document.getElementById('cartList');
 
   function updateCart(){
-    sessionStorage.setItem('cart', JSON.stringify(cart));
-    localStorage.setItem('cartUpdate', Date.now()); // sinaliza para outras abas
+    localStorage.setItem('cart', JSON.stringify(cart));
+    localStorage.setItem('cartUpdate', Date.now()); 
     renderCart();
   }
 
@@ -30,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // Contagem de produtos iguais
+
     const productCount = {};
     cart.forEach(p => productCount[p] = (productCount[p] || 0) + 1);
 
@@ -47,7 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
       cartList.appendChild(div);
     });
 
-    // Delegação de eventos para adicionar/remover
     cartList.querySelectorAll('.add').forEach(btn => {
       btn.onclick = () => {
         cart.push(btn.dataset.product);
@@ -68,11 +68,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   renderCart();
 
-  // ===== Sincronização entre abas =====
+
   window.addEventListener('storage', event => {
     if(event.key === 'cartUpdate'){
-      cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+      cart = JSON.parse(localStorage.getItem('cart')) || [];
       renderCart();
+      alert('O carrinho foi atualizado em outra aba!');
     }
     if(event.key === 'theme'){
       applyTheme(event.newValue);
