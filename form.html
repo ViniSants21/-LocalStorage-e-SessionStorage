@@ -7,27 +7,29 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div class="navbar">
-    <div>Formulário</div>
-    <div>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">Formulário</div>
+    <div class="nav-buttons">
       <button id="btnLight">Tema Claro</button>
       <button id="btnDark">Tema Escuro</button>
       <button onclick="window.location.href='index.html'">Produtos</button>
     </div>
-  </div>
+  </nav>
 
-  <div class="container">
-    <h2>Formulário</h2>
+  <!-- Conteúdo principal -->
+  <main class="container">
+    <h2>Formulário de Contato</h2>
     <form id="myForm">
-      <input type="text" id="name" placeholder="Nome" required>
-      <input type="email" id="email" placeholder="Email" required>
-      <textarea id="message" placeholder="Mensagem" required></textarea>
+      <input type="text" id="name" name="name" placeholder="Nome" required>
+      <input type="email" id="email" name="email" placeholder="Email" required>
+      <textarea id="message" name="message" placeholder="Mensagem" required></textarea>
       <button type="submit">Enviar</button>
     </form>
 
     <h3>Dados Enviados:</h3>
     <pre id="output"></pre>
-  </div>
+  </main>
 
   <script src="js/form.js"></script>
 </body>

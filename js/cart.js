@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function updateCart(){
     sessionStorage.setItem('cart', JSON.stringify(cart));
+    localStorage.setItem('cartUpdate', Date.now()); // sinaliza para outras abas
     renderCart();
   }
 
@@ -66,4 +67,15 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   renderCart();
+
+  // ===== Sincronização entre abas =====
+  window.addEventListener('storage', event => {
+    if(event.key === 'cartUpdate'){
+      cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+      renderCart();
+    }
+    if(event.key === 'theme'){
+      applyTheme(event.newValue);
+    }
+  });
 });

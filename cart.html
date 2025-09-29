@@ -7,20 +7,23 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div class="navbar">
-    <div>Carrinho</div>
-    <div>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">Carrinho</div>
+    <div class="nav-buttons">
       <button id="btnLight">Tema Claro</button>
       <button id="btnDark">Tema Escuro</button>
       <button onclick="window.location.href='index.html'">Produtos</button>
       <button onclick="window.location.href='form.html'">Formulário</button>
     </div>
-  </div>
+  </nav>
 
-  <div class="container">
+  <!-- Conteúdo principal -->
+  <main class="container">
     <h2>Seu Carrinho</h2>
-    <div id="cartList"></div>
-  </div>
+    <p>Clique em um produto para removê-lo do carrinho</p>
+    <div id="cartList" class="cart-list"></div>
+  </main>
 
   <script src="js/cart.js"></script>
 </body>

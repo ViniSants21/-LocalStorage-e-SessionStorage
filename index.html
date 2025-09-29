@@ -8,21 +8,22 @@
 </head>
 <body>
   <!-- Navbar -->
-  <div class="navbar">
-    <div>Produtos</div>
-    <div>
+  <nav class="navbar">
+    <div class="logo">Produtos</div>
+    <div class="nav-buttons">
       <button id="btnLight">Tema Claro</button>
       <button id="btnDark">Tema Escuro</button>
       <button onclick="window.location.href='form.html'">Formulário</button>
       <button onclick="window.location.href='cart.html'">Carrinho</button>
     </div>
-  </div>
+  </nav>
 
-  <div class="container">
-    <h2>Produtos</h2>
-    <h3>clique em cima para adicionar ao carrinho</h3>
-    <div id="productList"></div>
-  </div>
+  <!-- Conteúdo principal -->
+  <main class="container">
+    <h2>Produtos Disponíveis</h2>
+    <p>Clique no produto para adicionar ao carrinho</p>
+    <div id="productList" class="product-list"></div>
+  </main>
 
   <script src="js/index.js"></script>
 </body>
